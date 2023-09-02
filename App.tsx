@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ConfigCatProvider, PollingMode } from "configcat-react"
+
+import { Home } from "./src/pages/Home"
+import { StatusBar } from "react-native"
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <ConfigCatProvider
+      sdkKey="NKvbCJ1GyEGMtKdj9WFhqQ/KUVdxbZuAk-YD-5NfANldw"
+      pollingMode={PollingMode.AutoPoll}
+      options={{ pollIntervalSeconds: 10 }}
+    >
+      <StatusBar barStyle="light-content" />
+      <Home />
+    </ConfigCatProvider>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
